@@ -13,7 +13,7 @@ mydate = datetime.strptime(myStrDate, '%d $b, %Y').year
 print(mydate)
 
 
-)
+
 #bite 67
 
 start_100days = date(2017, 3, 30)
