@@ -31,11 +31,13 @@ todaydate.day
 #19
 
 
-christmas = date(2018, 12, 25)
+christmas = date(todaydate.year, 12, 25)
 christmas
 #datetime.date(2018, 12, 25)
 
 if christmas is not todaydate:
-    print("Sorry there are still " + str((christmas - todaydate).days) + " until Christmas!")
+    print("Sorry there are still " + str((christmas - todaydate).days) + " days until Christmas!")
 else:
     print("Yay it's Christmas!")
+
+
