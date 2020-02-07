@@ -22,25 +22,6 @@ def get_movies_by_director():
     """Extracts all movies from csv and stores them in a dict,
     where keys are directors, and values are a list of movies,
     use the defined Movie namedtuple"""
-
-#     ""
-#      Their code:
-#
-#
-# directors = defaultdict(list)
-# with open(data, encoding='utf-8') as f:
-#     for line in csv.DictReader(f):
-#         try:
-#             director = line['director_name']
-#             movie = line['movie_title'].replace('\xa0', '')
-#             year = int(line['title_year'])
-#             score = float(line['imdb_score'])
-#         except ValueError:
-#             continue
-#
-#         m = Movie(title=movie, year=year, score=score)
-#         directors[director].append(m)
-#     ""
     movies = defaultdict(list)
     input_file = csv.DictReader(open(f"/tmp/{fname}"))
     for row in input_file:
@@ -51,7 +32,6 @@ def get_movies_by_director():
             )
 
     return movies
-
 
 
 def calc_mean_score(movies):
@@ -80,30 +60,20 @@ def get_average_scores(directors):
         if len(directors[director]) < 4:
             director_del.append(director)
 
-    for dir in director_del:
-        del directors[dir]
+    for direct in director_del:
+        del directors[direct]
 
-    returnValue = []
-
-    # for director, movies in directors.items():
-    #     total = 0
-    #     count = 0
-    #     for mov in movies:
-    #         total = total + float(mov.score[1])
-    #         count = count + 1
-    #     returnValue.append((director, round((total / count), 1)))
+    return_value = []
 
     for director, movies in directors.items():
-        returnValue.append(
+        return_value.append(
             (
                 director,
                 round((sum([float(mov.score[1]) for mov in movies]) / len(movies)) , 1)
             )
         )
 
-    return sorted(returnValue, key=lambda x: x[1], reverse=True)
-
-
+    return sorted(return_value, key=lambda x: x[1], reverse=True)
 
 
 director_movies = get_movies_by_director()
