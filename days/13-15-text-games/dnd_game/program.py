@@ -1,6 +1,7 @@
 from actors import Creature, Wizard, Dragon
 import random
 
+
 def main():
     print_header()
     game_loop()
@@ -61,3 +62,4 @@ def game_loop():
 
 if __name__ == '__main__':
     main()
+
